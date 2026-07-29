@@ -1,4 +1,7 @@
-// Scroll-reveal: fade/slide elements in as they enter the viewport
+// =============================================================
+// SCROLL REVEAL
+// =============================================================
+
 const revealEls = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver(
@@ -15,7 +18,11 @@ const observer = new IntersectionObserver(
 
 revealEls.forEach((el) => observer.observe(el));
 
-// Simple mobile nav toggle
+
+// =============================================================
+// MOBILE NAV
+// =============================================================
+
 const navToggle = document.getElementById("navToggle");
 const navLinks = document.querySelector(".nav-links");
 
@@ -24,3 +31,40 @@ if (navToggle) {
     navLinks.classList.toggle("nav-links-open");
   });
 }
+
+
+// =============================================================
+// PROJECT ACCORDION
+// =============================================================
+
+const projectCards = document.querySelectorAll(".project-card");
+
+projectCards.forEach((card) => {
+
+  const header = card.querySelector(".project-header");
+
+  header.addEventListener("click", () => {
+
+    const isOpen = card.classList.contains("active");
+
+    // Close all other projects
+    projectCards.forEach((otherCard) => {
+      otherCard.classList.remove("active");
+    });
+
+    // Re-open clicked project if it wasn't already open
+    if (!isOpen) {
+      card.classList.add("active");
+
+      // Smooth scroll after animation
+      setTimeout(() => {
+        card.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }, 150);
+    }
+
+  });
+
+});

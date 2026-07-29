@@ -15,6 +15,56 @@ portfolio/
     └── me/                 ← your headshot (me.jpg)
 ```
 
+```
+└── images/
+    │
+    ├── me/
+    │   └── me.jpg
+    │
+    └── projects/
+        │
+        ├── project-01/
+        │   ├── cover.jpg
+        │   ├── 1.jpg
+        │   ├── 2.jpg
+        │   ├── 3.jpg
+        │   ├── 4.jpg
+        │   ├── 5.jpg
+        │   └── 6.jpg
+        │
+        ├── project-02/
+        │   ├── cover.jpg
+        │   ├── 1.jpg
+        │   ├── 2.jpg
+        │   ├── 3.jpg
+        │   └── 4.jpg
+        │
+        ├── project-03/
+        │   ├── cover.jpg
+        │   ├── 1.jpg
+        │   ├── 2.jpg
+        │   ├── 3.jpg
+        │   ├── 4.jpg
+        │   ├── 5.jpg
+        │   └── 6.jpg
+        │
+        ├── project-04/
+        │   ├── cover.jpg
+        │   ├── 1.jpg
+        │   └── 2.jpg
+        │
+        └── project-05/
+            ├── cover.jpg
+            ├── 1.jpg
+            ├── 2.jpg
+            ├── 3.jpg
+            ├── 4.jpg
+            ├── 5.jpg
+            ├── 6.jpg
+            ├── 7.jpg
+            └── 8.jpg
+```
+
 ## 1. Customize the content
 
 Open `index.html` in any text editor (VS Code recommended) and replace everything

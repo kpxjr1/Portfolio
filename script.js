@@ -96,7 +96,14 @@ projectCards.forEach((card) => {
 
 const lightbox = document.getElementById("lightbox");
 const lightboxImage = lightbox.querySelector(".lightbox-image");
-const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+const lightboxTitle =
+    lightbox.querySelector(".lightbox-title");
+
+const lightboxDescription =
+    lightbox.querySelector(".lightbox-description");
+
+const lightboxCounter =
+    lightbox.querySelector(".lightbox-counter");
 
 const btnPrev = lightbox.querySelector(".lightbox-prev");
 const btnNext = lightbox.querySelector(".lightbox-next");
@@ -135,10 +142,17 @@ function updateLightbox() {
     const img = currentGallery[currentIndex];
 
     lightboxImage.src = img.src;
+
     lightboxImage.alt = img.alt;
 
-    lightboxCaption.textContent =
-        img.dataset.caption || "";
+    lightboxTitle.textContent =
+        img.dataset.title || "";
+
+    lightboxDescription.textContent =
+        img.dataset.description || "";
+
+    lightboxCounter.textContent =
+        `${currentIndex + 1} / ${currentGallery.length}`;
 
 }
 

@@ -677,27 +677,53 @@ a { color: inherit; text-decoration: none; }
 
 }
 
-.lightbox-caption {
+.lightbox-info {
 
     position: absolute;
 
-    bottom: 40px;
+    bottom: 35px;
 
     left: 50%;
 
     transform: translateX(-50%);
 
+    width: min(750px, 90vw);
+
     color: white;
-
-    font-size: 17px;
-
-    max-width: 800px;
 
     text-align: center;
 
-    padding: 0 24px;
+}
 
-    line-height: 1.6;
+.lightbox-title {
+
+    margin: 0;
+
+    font-size: 26px;
+
+    font-weight: 600;
+
+}
+
+.lightbox-description {
+
+    margin: 14px 0;
+
+    color: rgba(255,255,255,.85);
+
+    line-height: 1.7;
+
+    font-size: 17px;
+
+}
+
+.lightbox-counter {
+
+    color: rgba(255,255,255,.65);
+
+    font-size: 14px;
+
+    letter-spacing: .08em;
 
 }
 

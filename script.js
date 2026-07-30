@@ -37,34 +37,55 @@ if (navToggle) {
 // PROJECT ACCORDION
 // =============================================================
 
+// =============================================================
+// PROJECT ACCORDION
+// =============================================================
+
 const projectCards = document.querySelectorAll(".project-card");
 
 projectCards.forEach((card) => {
 
-  const header = card.querySelector(".project-header");
+    const header = card.querySelector(".project-header");
+    const details = card.querySelector(".project-details");
 
-  header.addEventListener("click", () => {
+    // Make sure every project starts closed
+    details.style.height = "0px";
 
-    const isOpen = card.classList.contains("active");
+    header.addEventListener("click", () => {
 
-    // Close all other projects
-    projectCards.forEach((otherCard) => {
-      otherCard.classList.remove("active");
-    });
+        const isOpen = card.classList.contains("active");
 
-    // Re-open clicked project if it wasn't already open
-    if (!isOpen) {
-      card.classList.add("active");
+        // Close every project
+        projectCards.forEach((otherCard) => {
 
-      // Smooth scroll after animation
-      setTimeout(() => {
-        card.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
+            otherCard.classList.remove("active");
+
+            const otherDetails =
+                otherCard.querySelector(".project-details");
+
+            otherDetails.style.height = "0px";
+
         });
-      }, 150);
-    }
 
-  });
+        // If this one wasn't open, open it
+        if (!isOpen) {
+
+            card.classList.add("active");
+
+            // Measure actual content height
+            details.style.height = details.scrollHeight + "px";
+
+            setTimeout(() => {
+
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }, 120);
+
+        }
+
+    });
 
 });

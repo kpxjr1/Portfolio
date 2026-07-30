@@ -631,3 +631,8 @@ a { color: inherit; text-decoration: none; }
 
   .footer { flex-direction: column; gap: 12px; text-align: center; }
 }
+
+
+body {
+    background: pink !important;
+}

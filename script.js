@@ -89,3 +89,135 @@ projectCards.forEach((card) => {
     });
 
 });
+
+// =============================================================
+// LIGHTBOX
+// =============================================================
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = lightbox.querySelector(".lightbox-image");
+const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+
+const btnPrev = lightbox.querySelector(".lightbox-prev");
+const btnNext = lightbox.querySelector(".lightbox-next");
+const btnClose = lightbox.querySelector(".lightbox-close");
+
+let currentGallery = [];
+let currentIndex = 0;
+
+
+// ---------- Open Lightbox ----------
+
+document.querySelectorAll(".project-gallery img").forEach((image) => {
+
+    image.addEventListener("click", () => {
+
+        currentGallery = [
+            ...image.closest(".project-gallery").querySelectorAll("img")
+        ];
+
+        currentIndex = currentGallery.indexOf(image);
+
+        updateLightbox();
+
+        lightbox.classList.add("open");
+        document.body.classList.add("lightbox-open");
+
+    });
+
+});
+
+
+// ---------- Update Image ----------
+
+function updateLightbox() {
+
+    const img = currentGallery[currentIndex];
+
+    lightboxImage.src = img.src;
+    lightboxImage.alt = img.alt;
+
+    lightboxCaption.textContent =
+        img.dataset.caption || "";
+
+}
+
+
+// ---------- Navigation ----------
+
+function nextImage() {
+
+    currentIndex =
+        (currentIndex + 1) % currentGallery.length;
+
+    updateLightbox();
+
+}
+
+function previousImage() {
+
+    currentIndex =
+        (currentIndex - 1 + currentGallery.length) %
+        currentGallery.length;
+
+    updateLightbox();
+
+}
+
+
+// ---------- Close ----------
+
+function closeLightbox() {
+
+    lightbox.classList.remove("open");
+    document.body.classList.remove("lightbox-open");
+
+}
+
+
+// ---------- Buttons ----------
+
+btnNext.addEventListener("click", nextImage);
+
+btnPrev.addEventListener("click", previousImage);
+
+btnClose.addEventListener("click", closeLightbox);
+
+
+// ---------- Click Background ----------
+
+lightbox.addEventListener("click", (e) => {
+
+    if (e.target === lightbox) {
+
+        closeLightbox();
+
+    }
+
+});
+
+
+// ---------- Keyboard ----------
+
+document.addEventListener("keydown", (e) => {
+
+    if (!lightbox.classList.contains("open"))
+        return;
+
+    switch (e.key) {
+
+        case "ArrowRight":
+            nextImage();
+            break;
+
+        case "ArrowLeft":
+            previousImage();
+            break;
+
+        case "Escape":
+            closeLightbox();
+            break;
+
+    }
+
+});
